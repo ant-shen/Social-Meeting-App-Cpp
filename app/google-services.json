@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "869806844323",
+    "project_id": "mobileapp-c9c54",
+    "storage_bucket": "mobileapp-c9c54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869806844323:android:f8e10227a0f33d2c221216",
+        "android_client_info": {
+          "package_name": "com.bignerdranch.android.broncopals"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdM2GI15i8h9VaXjj_6_9k_CbI8IFxWKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
