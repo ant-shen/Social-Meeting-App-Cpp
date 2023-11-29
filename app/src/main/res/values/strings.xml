@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BroncoPals</string>
+    <string name="user_name">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_registered">Already Registered? Login</string>
+    <string name="login_button">Login</string>
+    <string name="registration">Registration</string>
+
 </resources>
