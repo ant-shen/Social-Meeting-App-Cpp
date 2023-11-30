@@ -11,30 +11,44 @@
     tools:context=".LoginActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="85dp"
+        android:fontFamily="serif"
         android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/gold"
         android:textSize="50sp"
-        android:fontFamily="serif"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/broncopal_logo"
+        android:layout_width="123dp"
+        android:layout_height="114dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/bronco_logo"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="115dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
