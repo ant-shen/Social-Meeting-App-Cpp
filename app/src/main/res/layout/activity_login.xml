@@ -48,7 +48,7 @@
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="@string/login"
                 android:textAlignment="center"
                 android:textColor="@color/green"
                 android:textSize="36sp"
@@ -60,9 +60,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/edittext_border"
-                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableStart="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="@string/user_name"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
@@ -72,10 +74,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_border"
-                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawableStart="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
+                android:autofillHints="password"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 

@@ -5,7 +5,7 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryVariant">@color/green</item>
-        <item name="android:statusBarColor">@color/gold</item>
+        <item name="android:statusBarColor">@color/blue</item>
     </style>
 
 </resources>

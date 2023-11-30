@@ -8,5 +8,7 @@
     <string name="need_register">Need an Account? Register</string>
     <string name="login_button">Log In</string>
     <string name="registration">Registration</string>
+    <string name="login">Login</string>
+    <string name="logo_description">BroncoPal Logo</string>
 
 </resources>
