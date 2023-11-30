@@ -45,24 +45,43 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerUser(username: String, password: String){
-        databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (!dataSnapshot.exists()){
-                    val id = databaseReference.push().key
-                    val userData = UserData(id, username, password)
-                    databaseReference.child(id!!).setValue(userData)
-                    Toast.makeText(this@RegistrationActivity, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
+    private fun registerUser(username: String, password: String) {
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this@RegistrationActivity, "ALL FIELDS MUST BE FILLED OUT!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        auth.createUserWithEmailAndPassword(username, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Registration successful
+                    val user = auth.currentUser
+
+                    // Send email verification
+                    user?.sendEmailVerification()
+                        ?.addOnCompleteListener { emailVerificationTask ->
+                            if (emailVerificationTask.isSuccessful) {
+                                Toast.makeText(this@RegistrationActivity, "Verification email sent.", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(this@RegistrationActivity, "Failed to send verification email.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                    val userId = user?.uid
+                    val userData = UserData(userId, username, password)
+
+                    // Use the UID as the key for the user in the database
+                    databaseReference.child(userId!!).setValue(userData)
+
+                    Toast.makeText(this@RegistrationActivity, "Sign Up Successful! Check your email for verification.", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this@RegistrationActivity, "User Already Exists!", Toast.LENGTH_SHORT).show()
+                    // If registration fails, display a message to the user.
+                    Toast.makeText(this@RegistrationActivity, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@RegistrationActivity, "Database Error: ${databaseError.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
+
+
 }
