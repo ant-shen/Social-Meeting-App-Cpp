@@ -12,21 +12,22 @@
 
 package com.bignerdranch.android.broncopals
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import com.bignerdranch.android.broncopals.databinding.ActivityLoginBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
-    lateinit var username : EditText
-    lateinit var password: EditText
-    lateinit var loginButton: Button
+    private lateinit var firebaseDatabase: FirebaseDatabase
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +35,45 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginButton.setOnClickListener(View.OnClickListener {
-            if (binding.username.text.toString() == "user" && binding.password.text.toString() == "1234"){
-                Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase.reference.child("users")
+
+        binding.loginButton.setOnClickListener {
+            val username = binding.username.text.toString()
+            val password = binding.password.text.toString()
+
+            if (username.isNotEmpty() && password.isNotEmpty()) {
+                loginUser(username, password)
             } else {
-                Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "ALL FIELDS MUST BE FILLED OUT!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.registerRedirect.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegistrationActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun loginUser(username: String, password: String) {
+        databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (userSnapshot in dataSnapshot.children) {
+                        val userData = userSnapshot.getValue(UserData::class.java)
+
+                        if (userData != null && userData.password == password) {
+                            Toast.makeText(this@LoginActivity, "Login Successful!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                            finish()
+                            return
+                        }
+                    }
+                }
+                Toast.makeText(this@LoginActivity, "Login Failed!", Toast.LENGTH_SHORT).show()
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(this@LoginActivity, "Database Error: ${databaseError.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
