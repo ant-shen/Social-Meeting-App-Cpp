@@ -39,8 +39,11 @@ class RegistrationActivity : AppCompatActivity() {
                 val username = "$enteredUsername$domain"
                 registerUser(username, registerPassword)
             } else {
-                Toast.makeText(this@RegistrationActivity, "Invalid email or password!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RegistrationActivity, "Invalid email or password!", Toast.LENGTH_LONG).show()
             }
+
+            val intent = Intent(this, CreateProfileActivity::class.java)
+            startActivity(intent)
         }
 
         binding.loginRedirect.setOnClickListener {
