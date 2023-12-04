@@ -6,11 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.bignerdranch.android.broncopals.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -74,7 +71,7 @@ class RegistrationActivity : AppCompatActivity() {
                     databaseReference.child(userId!!).setValue(userData)
 
                     Toast.makeText(this@RegistrationActivity, "Sign Up Successful! Check your email for verification.", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
+                    startActivity(Intent(this@RegistrationActivity, VerifyEmailActivity::class.java))
                     finish()
                 } else {
                     // If registration fails, display a message to the user.

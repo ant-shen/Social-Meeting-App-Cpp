@@ -10,5 +10,7 @@
     <string name="registration">Registration</string>
     <string name="login">Login</string>
     <string name="logo_description">BroncoPal Logo</string>
+    <string name="verify_email">Verify Email\nFor\nProfile Creation</string>
+    <string name="verified">I Verified !!</string>
 
 </resources>
