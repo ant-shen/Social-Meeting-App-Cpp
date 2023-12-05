@@ -71,7 +71,7 @@ class RegistrationActivity : AppCompatActivity() {
                     databaseReference.child(userId!!).setValue(userData)
 
                     Toast.makeText(this@RegistrationActivity, "Sign Up Successful! Check your email for verification.", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@RegistrationActivity, VerifyEmailActivity::class.java))
+                    startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
                     finish()
                 } else {
                     // If registration fails, display a message to the user.

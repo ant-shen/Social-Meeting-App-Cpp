@@ -27,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.loginButton.setOnClickListener {
-            val username = binding.username.text.toString()
-            val password = binding.password.text.toString()
+            val username = binding.loginUsername.text.toString()
+            val password = binding.loginPassword.text.toString()
             val currentUser = firebaseAuth.currentUser
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
                             } else {
                                 // if email still not verified, meaning fresh account, redirect to VerifyEmailActivity
                                 Toast.makeText(this, "This email is not yet verified, please verify email!",Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this,VerifyEmailActivity::class.java))
+                                startActivity(Intent(this,LoginActivity::class.java))
                                 finish()
                             }
                         } else {

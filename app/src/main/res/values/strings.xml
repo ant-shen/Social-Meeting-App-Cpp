@@ -14,9 +14,10 @@
     <string name="hobby">Hobby</string>
     <string name="about_me">About Me</string>
     <string name="create_profile">Create Profile</string>
-    <string name="submit">Submit</string>
+    <string name="save">Save</string>
     <string name="logo_description">BroncoPal Logo</string>
     <string name="verify_email">Verify Email\nFor\nProfile Creation</string>
     <string name="verified">I Verified !!</string>
+    <string name="profile">Profile Creation</string>
 
 </resources>

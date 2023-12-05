@@ -50,10 +50,10 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/440b0034753a100d5e2bd31275aeb8e3/transformed/ui-test-manifest-1.4.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/57453ca32c1a21c07238d02a113b2b05/transformed/appcompat-1.6.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f37fec8c3af17b7d2883c5ca8cc838ac/transformed/firebase-auth-22.3.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/d9e96285abf777acd4084188c1ef3195/transformed/firebase-database-20.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f2d6618e93db58e23591f0a4f8a4404b/transformed/play-services-auth-api-phone-17.4.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/94a5bba2280adc2103834bcff17b61db/transformed/recaptcha-18.1.2-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0d9019d5e9eb921a23a758014564bc77/transformed/integrity-1.1.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/d9e96285abf777acd4084188c1ef3195/transformed/firebase-database-20.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/21b28b62e0cbf5482279ee0e7c8d48bc/transformed/firebase-appcheck-interop-17.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0592bb586e925fc9255aaa549e126a97/transformed/firebase-auth-interop-20.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/e2c367d443930811f86917d404d5ddfc/transformed/firebase-common-ktx-20.4.2-api.jar</arg>

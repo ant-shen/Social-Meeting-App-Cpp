@@ -36,7 +36,7 @@
                 android:id="@+id/createProfileText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/create_profile"
+                android:text="@string/profile"
                 android:textAlignment="center"
                 android:textColor="@color/green"
                 android:textSize="36sp"
@@ -63,19 +63,21 @@
                 android:drawableStart="@drawable/baseline_menu_book_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/major"
+                android:inputType="text"
                 android:autofillHints="major"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edittext_border"
                 android:drawableStart="@drawable/baseline_cake_24"
                 android:drawablePadding="8dp"
-                android:hint="@string/age"
+                android:text="@string/age"
+                android:inputType="number"
                 android:autofillHints="age"
                 android:padding="8dp"
                 android:textColor="@color/black" />
@@ -89,6 +91,7 @@
                 android:drawableStart="@drawable/baseline_sports_esports_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/hobby"
+                android:inputType="text"
                 android:autofillHints="hobby"
                 android:padding="8dp"
                 android:textColor="@color/black" />
@@ -102,6 +105,7 @@
                 android:drawableStart="@drawable/baseline_description_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/about_me"
+                android:inputType="text"
                 android:autofillHints="about_me"
                 android:padding="8dp"
                 android:textColor="@color/black" />
@@ -112,7 +116,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/rounded_button"
-                android:text="@string/submit"
+                android:text="@string/create_profile"
                 android:textColor="@color/gold"
                 android:textSize="18sp" />
             

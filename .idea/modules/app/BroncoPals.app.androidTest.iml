@@ -46,14 +46,17 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/440b0034753a100d5e2bd31275aeb8e3/transformed/ui-test-manifest-1.4.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7f9d0645677264fbcd291da16c34332a/transformed/activity-ktx-1.8.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f37fec8c3af17b7d2883c5ca8cc838ac/transformed/firebase-auth-22.3.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/fc40d2e1395ff110e9610fcee3fa6f1b/transformed/firebase-database-ktx-20.3.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/d9e96285abf777acd4084188c1ef3195/transformed/firebase-database-20.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f2d6618e93db58e23591f0a4f8a4404b/transformed/play-services-auth-api-phone-17.4.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/94a5bba2280adc2103834bcff17b61db/transformed/recaptcha-18.1.2-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0d9019d5e9eb921a23a758014564bc77/transformed/integrity-1.1.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/fc40d2e1395ff110e9610fcee3fa6f1b/transformed/firebase-database-ktx-20.3.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/d9e96285abf777acd4084188c1ef3195/transformed/firebase-database-20.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0592bb586e925fc9255aaa549e126a97/transformed/firebase-auth-interop-20.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/e2c367d443930811f86917d404d5ddfc/transformed/firebase-common-ktx-20.4.2-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/dd56ed3645d278dfcbb49fe90da2748b/transformed/firebase-common-20.4.2-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/21b28b62e0cbf5482279ee0e7c8d48bc/transformed/firebase-appcheck-interop-17.1.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/24c79390f8ab5c88c9fc4ed51117c9c5/transformed/firebase-database-collection-18.0.1-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/8a8889d338f7051a8b643493d1d0e7a3/transformed/play-services-base-18.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5f58ff86aa65b5a226fa13f25e941742/transformed/espresso-core-3.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b3b8b642d42519a9faf7636e83d1a0c6/transformed/core-1.5.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5a5918e131b96b1cdcf75cd6e409837a/transformed/dynamicanimation-1.0.0-api.jar</arg>
@@ -77,9 +80,6 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/1cb6f3684df09b20e67ac829106973a3/transformed/viewpager-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/2b01cce8427d06449b0df72b2fb0cc6f/transformed/recyclerview-1.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/42ec3f2259800a78369415d2002f8135/transformed/customview-1.1.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/21b28b62e0cbf5482279ee0e7c8d48bc/transformed/firebase-appcheck-interop-17.1.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/24c79390f8ab5c88c9fc4ed51117c9c5/transformed/firebase-database-collection-18.0.1-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/8a8889d338f7051a8b643493d1d0e7a3/transformed/play-services-base-18.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/4a4db99de5a0362cafd345ebb8a98dbc/transformed/core-1.12.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c552c829c556c17e61f4ce5023c24642/transformed/lifecycle-runtime-2.6.2-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0747c93cb3effad64d7cf71c8578fc75/transformed/lifecycle-runtime-ktx-2.6.2-api.jar</arg>
