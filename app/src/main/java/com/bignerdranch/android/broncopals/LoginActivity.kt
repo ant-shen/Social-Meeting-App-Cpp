@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
                             // checks for email verification using firebase authentication
                             if(currentUser!!.isEmailVerified) {
                                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this, MainActivity::class.java)
+                                val intent = Intent(this, CreateProfileActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             } else {

@@ -2,6 +2,7 @@ package com.bignerdranch.android.broncopals
 
 data class UserData (
     val id: String? = null,
+    val hasProfile: String = "false",
     val username: String? = null,
     val password: String? = null,
     val major: String? = null,
