@@ -1,17 +1,25 @@
 package com.bignerdranch.android.broncopals
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.bignerdranch.android.broncopals.databinding.ActivityCreateProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class CreateProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateProfileBinding
-    private lateinit var databaseReference: DatabaseReference
+    private lateinit var storageReference: StorageReference
+
+    private var uri: Uri? = null
+    private val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateProfileBinding.inflate(layoutInflater)
@@ -20,25 +28,54 @@ class CreateProfileActivity : AppCompatActivity() {
 //        val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 //        val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
 
+        storageReference = FirebaseStorage.getInstance().reference
+
+        // goes into gallery to pick an image to upload
+        val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
+            binding.images.setImageURI(it)
+            if (it != null) {
+                // stores the image into variable uri
+                uri = it
+            } else {
+                Toast.makeText(this, "The images was not selected or there was an error!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.uploadImage.setOnClickListener {
+            imagePickerLauncher.launch("image/*")
+
+        }
+
         binding.createProfileButton.setOnClickListener {
             //val userQuery = usersRef.orderByChild("username").equalTo(currentUser!!.email)
+            uri?.let {
+                storageReference.child(currentUser!!.uid).putFile(it)
+                    .addOnSuccessListener { task ->
+                        task.metadata!!.reference!!.downloadUrl
+                            .addOnSuccessListener { url ->
+                                Toast.makeText(this, "Image successfully stored!", Toast.LENGTH_SHORT).show()
+                                val imageUri = url.toString()
+                                val firstName = binding.firstName.text.toString()
+                                val lastName = binding.lastName.text.toString()
+                                val major = binding.major.text.toString()
+                                val age = binding.age.text.toString()
+                                val hobbies = binding.hobby.text.toString()
+                                val aboutMe = binding.aboutMe.text.toString()
 
-            val firstName = binding.firstName.text.toString()
-            val lastName = binding.lastName.text.toString()
-            val major = binding.major.text.toString()
-            val age = binding.age.text.toString()
-            val hobbies = binding.hobby.text.toString()
-            val aboutMe = binding.aboutMe.text.toString()
-
-            updateProfile(firstName, lastName, major, age, hobbies, aboutMe)
-
+                                updateProfile(imageUri, firstName, lastName, major, age, hobbies, aboutMe)
+                            } .addOnFailureListener {
+                                Toast.makeText(this, "Image storage has failed!", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+            }
             //databaseReference = FirebaseDatabase.getInstance().getReference("users")
         }
     }
 
-    private fun updateProfile(firstName: String, lastName: String, major: String, age: String, hobbies: String, aboutMe: String) {
+    private fun updateProfile(imageUri: String, firstName: String, lastName: String, major: String, age: String, hobbies: String, aboutMe: String) {
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
-        val user = mapOf<String, String>(
+        val user = mapOf(
+            "imageUri" to imageUri,
             "firstName" to firstName,
             "lastName" to lastName,
             "major" to major,
@@ -46,7 +83,7 @@ class CreateProfileActivity : AppCompatActivity() {
             "hobbies" to hobbies,
             "aboutMe" to aboutMe
         )
-        val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
         usersRef.child(currentUser!!.uid).updateChildren(user).addOnSuccessListener {
             binding.firstName.text.clear()
             binding.lastName.text.clear()

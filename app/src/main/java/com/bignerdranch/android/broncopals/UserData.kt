@@ -5,6 +5,7 @@ data class UserData (
     val username: String? = null,
     val password: String? = null,
     val hasProfile: String? = null,
+    val imageUri: String? = null,
     val firstName: String? = null,
     val lastName: String? = null,
     val major: String? = null,

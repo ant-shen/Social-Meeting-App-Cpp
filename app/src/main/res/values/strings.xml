@@ -21,5 +21,6 @@
     <string name="verify_email">Verify Email\nFor\nProfile Creation</string>
     <string name="verified">I Verified !!</string>
     <string name="profile">Profile Creation</string>
+    <string name="upload_image">Upload Pictures to Appeal</string>
 
 </resources>
