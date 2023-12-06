@@ -23,21 +23,24 @@ class CreateProfileActivity : AppCompatActivity() {
         binding.createProfileButton.setOnClickListener {
             //val userQuery = usersRef.orderByChild("username").equalTo(currentUser!!.email)
 
+            val firstName = binding.firstName.text.toString()
+            val lastName = binding.lastName.text.toString()
             val major = binding.major.text.toString()
             val age = binding.age.text.toString()
             val hobbies = binding.hobby.text.toString()
             val aboutMe = binding.aboutMe.text.toString()
 
-            updateProfile("true", major, age, hobbies, aboutMe)
+            updateProfile(firstName, lastName, major, age, hobbies, aboutMe)
 
             //databaseReference = FirebaseDatabase.getInstance().getReference("users")
         }
     }
 
-    private fun updateProfile(hasProfile: String, major: String, age: String, hobbies: String, aboutMe: String) {
+    private fun updateProfile(firstName: String, lastName: String, major: String, age: String, hobbies: String, aboutMe: String) {
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
         val user = mapOf<String, String>(
-            "hasProfile" to hasProfile,
+            "firstName" to firstName,
+            "lastName" to lastName,
             "major" to major,
             "age" to age,
             "hobbies" to hobbies,
@@ -45,6 +48,8 @@ class CreateProfileActivity : AppCompatActivity() {
         )
         val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         usersRef.child(currentUser!!.uid).updateChildren(user).addOnSuccessListener {
+            binding.firstName.text.clear()
+            binding.lastName.text.clear()
             binding.major.text.clear()
             binding.age.text.clear()
             binding.hobby.text.clear()

@@ -9,6 +9,8 @@
     <string name="login_button">Log In</string>
     <string name="registration">Registration</string>
     <string name="login">Login</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
     <string name="major">Major</string>
     <string name="age">Age</string>
     <string name="hobby">Hobby</string>
