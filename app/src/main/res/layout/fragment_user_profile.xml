@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,6 +38,17 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+
+                <TextView
+                    android:id="@+id/createProfileText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
                 <ImageView
                     android:id="@+id/userImage"
                     android:layout_width="200dp"
@@ -51,56 +63,74 @@
                 <TextView
                     android:id="@+id/fullName"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12sp"
-                    android:padding="5dp"
+                    android:background="@drawable/edittext_border"
+                    android:textSize="18sp"
+                    app:drawableStartCompat="@drawable/baseline_person_24"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/major"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12sp"
-                    android:padding="5dp"
+                    android:background="@drawable/edittext_border"
+                    app:drawableStartCompat="@drawable/baseline_menu_book_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:padding="8dp"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/age"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12sp"
-                    android:padding="5dp"
+                    android:background="@drawable/edittext_border"
+                    app:drawableStartCompat="@drawable/baseline_cake_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:padding="8dp"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/gender"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12sp"
-                    android:padding="5dp"
+                    android:background="@drawable/edittext_border"
+                    app:drawableStartCompat="@drawable/baseline_person_pin_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:padding="8dp"
                     android:textColor="@color/black" />
 
 
                 <TextView
                     android:id="@+id/hobby"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12sp"
-                    android:padding="5dp"
+                    android:background="@drawable/edittext_border"
+                    app:drawableStartCompat="@drawable/baseline_sports_esports_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:padding="8dp"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/bio"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12sp"
-                    android:padding="5dp"
+                    android:background="@drawable/edittext_border"
+                    app:drawableStartCompat="@drawable/baseline_description_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:padding="8dp"
                     android:textColor="@color/black" />
 
                 <Button

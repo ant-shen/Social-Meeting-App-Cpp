@@ -24,6 +24,7 @@ class MatchesAdapter(val context: Context, var list: ArrayList<UserData>) :
         )
     }
 
+
     override fun getItemCount(): Int {
         return list.size
     }
@@ -31,6 +32,7 @@ class MatchesAdapter(val context: Context, var list: ArrayList<UserData>) :
     override fun onBindViewHolder(holder: MatchesViewHolder, position: Int) {
         Glide.with(context).load(list[position].imageUri).into(holder.binding.userImage)
         holder.binding.firstName.text = list[position].firstName
+
     }
 
     // Function to update the dataset

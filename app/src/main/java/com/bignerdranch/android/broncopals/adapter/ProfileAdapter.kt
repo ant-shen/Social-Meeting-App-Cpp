@@ -17,8 +17,9 @@ class ProfileAdapter(val context : Context, val list : ArrayList<UserData>) : Re
     }
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
-        holder.binding.textView6.text = list[position].firstName
-        holder.binding.textView5.text = list[position].major
+        holder.binding.textView5.text = list[position].firstName
+        holder.binding.textView6.text = list[position].major
+        holder.binding.textView7.text = list[position].hobbies
 
         Glide.with(context).load(list[position].imageUri).into(holder.binding.userImage)
     }

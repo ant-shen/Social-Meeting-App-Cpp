@@ -35,19 +35,24 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             val username = binding.loginUsername.text.toString()
             val password = binding.loginPassword.text.toString()
-            val currentUser = firebaseAuth.currentUser
 
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            val currentUser = firebaseAuth.currentUser
+
                             // checks for email verification using firebase authentication
                             if(currentUser!!.isEmailVerified) {
                                 checkUserProfile(currentUser.uid)
                             } else {
                                 // if email still not verified, meaning fresh account, redirect to VerifyEmailActivity
-                                Toast.makeText(this, "This email is not yet verified, please verify email!",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    this,
+                                    "This email is not yet verified, please verify email!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         } else {
                             Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
