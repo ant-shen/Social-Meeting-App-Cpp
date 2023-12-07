@@ -1,10 +1,11 @@
 package com.bignerdranch.android.broncopals
 
+import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.bignerdranch.android.broncopals.databinding.ActivityCreateProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -62,6 +63,7 @@ class CreateProfileActivity : AppCompatActivity() {
                                 val hobbies = binding.hobby.text.toString()
                                 val aboutMe = binding.aboutMe.text.toString()
 
+
                                 updateProfile(imageUri, firstName, lastName, major, age, hobbies, aboutMe)
                             } .addOnFailureListener {
                                 Toast.makeText(this, "Image storage has failed!", Toast.LENGTH_SHORT).show()
@@ -72,7 +74,7 @@ class CreateProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateProfile(imageUri: String, firstName: String, lastName: String, major: String, age: String, hobbies: String, aboutMe: String) {
+    private fun updateProfile( imageUri: String, firstName: String, lastName: String, major: String, age: String, hobbies: String, aboutMe: String) {
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
         val user = mapOf(
             "imageUri" to imageUri,
@@ -81,7 +83,8 @@ class CreateProfileActivity : AppCompatActivity() {
             "major" to major,
             "age" to age,
             "hobbies" to hobbies,
-            "aboutMe" to aboutMe
+            "aboutMe" to aboutMe,
+            "hasProfile" to true
         )
 
         usersRef.child(currentUser!!.uid).updateChildren(user).addOnSuccessListener {
@@ -91,7 +94,11 @@ class CreateProfileActivity : AppCompatActivity() {
             binding.age.text.clear()
             binding.hobby.text.clear()
             binding.aboutMe.text.clear()
+
             Toast.makeText(this, "Successfully Updated", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this@CreateProfileActivity, MainActivity::class.java)
+            startActivity(intent)
         }.addOnFailureListener {
             Toast.makeText(this, "Failed to Update", Toast.LENGTH_LONG).show()
         }

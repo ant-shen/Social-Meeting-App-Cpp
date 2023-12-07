@@ -1,17 +1,15 @@
 package com.bignerdranch.android.broncopals
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bignerdranch.android.broncopals.databinding.ActivityLoginBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-
-import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
@@ -49,15 +47,7 @@ class LoginActivity : AppCompatActivity() {
                             // checks for email verification using firebase authentication
                             if(currentUser!!.isEmailVerified) {
                                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this, CreateProfileActivity::class.java)
-//                                if (currentUser.hasProfile) {
-//                                    val intent = Intent(this, CreateProfileActivity::class.java)
-//                                }
-//                                else {
-//                                    val intent = Intent(this, MainActivity::class.java)
-//                                }
-                                startActivity(intent)
-                                finish()
+                                checkUserProfile(currentUser.uid)
                             } else {
                                 // if email still not verified, meaning fresh account, redirect to VerifyEmailActivity
                                 Toast.makeText(this, "This email is not yet verified, please verify email!",Toast.LENGTH_SHORT).show()
@@ -77,5 +67,38 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity, RegistrationActivity::class.java))
             finish()
         }
+    }
+    private fun checkUserProfile(userId: String) {
+        val userReference = databaseReference.child(userId)
+
+        userReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.child("hasProfile").getValue(Boolean::class.java) == false){
+                    Toast.makeText(this@LoginActivity, "Successful Login", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@LoginActivity, CreateProfileActivity::class.java))
+                    finish()
+                }
+                else if (snapshot.child("hasProfile").getValue(Boolean::class.java) == true){
+                    Toast.makeText(this@LoginActivity, "Welcome back", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    finish()
+                }
+
+                /* Check if the hasProfile field exists and is true
+                val hasProfile = snapshot.child("hasProfile").getValue(Boolean::class.java) ?: false
+
+                // Redirect based on the hasProfile value
+                val redirectClass = if (hasProfile) MainActivity::class.java else CreateProfileActivity::class.java
+                val intent = Intent(this@LoginActivity, redirectClass)
+                startActivity(intent)
+                finish()
+
+                 */
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@LoginActivity, "Error checking user profile", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

@@ -70,7 +70,7 @@ class RegistrationActivity : AppCompatActivity() {
                             }
 
                         val userId = user?.uid
-                        val userData = UserData(userId, username, password, "false")
+                        val userData = UserData(userId, username, password, false)
 
                         // Use the UID as the key for the user in the database
                         databaseReference.child(userId!!).setValue(userData)
