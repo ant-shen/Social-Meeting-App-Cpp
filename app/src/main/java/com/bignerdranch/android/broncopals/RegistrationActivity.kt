@@ -63,8 +63,8 @@ class RegistrationActivity : AppCompatActivity() {
                                 } else {
                                     Toast.makeText(
                                         this@RegistrationActivity,
-                                        "Failed to send verification email.",
-                                        Toast.LENGTH_SHORT
+                                        "Failed to send verification email. Please use your school email address.",
+                                        Toast.LENGTH_LONG
                                     ).show()
                                 }
                             }
