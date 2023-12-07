@@ -74,6 +74,13 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    implementation("com.github.yuyakaido:CardStackView:v2.3.4")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

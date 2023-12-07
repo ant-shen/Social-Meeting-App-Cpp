@@ -37,11 +37,6 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.loginPassword.text.toString()
             val currentUser = firebaseAuth.currentUser
 
-//            databaseReference?.addValueEventListener(object: ValueEventListener) {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                }
-//            }
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(username, password)
@@ -83,16 +78,6 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 }
 
-                /* Check if the hasProfile field exists and is true
-                val hasProfile = snapshot.child("hasProfile").getValue(Boolean::class.java) ?: false
-
-                // Redirect based on the hasProfile value
-                val redirectClass = if (hasProfile) MainActivity::class.java else CreateProfileActivity::class.java
-                val intent = Intent(this@LoginActivity, redirectClass)
-                startActivity(intent)
-                finish()
-
-                 */
             }
 
             override fun onCancelled(error: DatabaseError) {

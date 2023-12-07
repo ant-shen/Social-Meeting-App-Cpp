@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
-                R.id.home -> startActivity(Intent(this@MainActivity, MainActivity::class.java))
+                R.id.home -> replaceFragment(ProfileFragment())
+                R.id.matches ->replaceFragment(MatchesFragment())
                 R.id.profile -> replaceFragment(UserProfile())
                 R.id.logout -> startActivity(Intent(this@MainActivity, LoginActivity::class.java))
 
