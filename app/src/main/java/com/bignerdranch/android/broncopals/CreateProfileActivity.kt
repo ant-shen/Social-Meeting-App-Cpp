@@ -27,6 +27,7 @@ class CreateProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         storageReference = FirebaseStorage.getInstance().reference
+        var imageUri = ""
 
         // goes into gallery to pick an image to upload
         val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
@@ -45,6 +46,13 @@ class CreateProfileActivity : AppCompatActivity() {
         }
 
         binding.createProfileButton.setOnClickListener {
+            val firstName = binding.firstName.text.toString()
+            val lastName = binding.lastName.text.toString()
+            val major = binding.major.text.toString()
+            val gender = binding.major.text.toString()
+            val age = binding.age.text.toString()
+            val hobbies = binding.hobby.text.toString()
+            val aboutMe = binding.aboutMe.text.toString()
             //val userQuery = usersRef.orderByChild("username").equalTo(currentUser!!.email)
             uri?.let {
                 storageReference.child(currentUser!!.uid).putFile(it)
@@ -52,27 +60,24 @@ class CreateProfileActivity : AppCompatActivity() {
                         task.metadata!!.reference!!.downloadUrl
                             .addOnSuccessListener { url ->
                                 Toast.makeText(this, "Image successfully stored!", Toast.LENGTH_SHORT).show()
-                                val imageUri = url.toString()
-                                val firstName = binding.firstName.text.toString()
-                                val lastName = binding.lastName.text.toString()
-                                val major = binding.major.text.toString()
-                                val gender = binding.major.text.toString()
-                                val age = binding.age.text.toString()
-                                val hobbies = binding.hobby.text.toString()
-                                val aboutMe = binding.aboutMe.text.toString()
-
-
-                                updateProfile(imageUri, firstName, lastName, major, gender, age, hobbies, aboutMe)
-                            } .addOnFailureListener {
-                                Toast.makeText(this, "Image storage has failed!", Toast.LENGTH_SHORT).show()
+                                imageUri = url.toString()
+                                //updatePicture(imageUri)
+                                //updateProfile(firstName, lastName, major, gender, age, hobbies, aboutMe)
                             }
+                    } .addOnFailureListener {
+                        Toast.makeText(this, "Image storage has failed!", Toast.LENGTH_SHORT).show()
                     }
+                updateProfile(imageUri, firstName, lastName, major, gender, age, hobbies, aboutMe)
+            }
+
+            if (imageUri == "") {
+                Toast.makeText(this, "Please upload an image", Toast.LENGTH_SHORT).show()
             }
             //databaseReference = FirebaseDatabase.getInstance().getReference("users")
         }
     }
 
-    private fun updateProfile( imageUri: String, firstName: String, lastName: String, major: String,gender: String, age: String, hobbies: String, aboutMe: String) {
+    private fun updateProfile(imageUri:String, firstName: String, lastName: String, major: String,gender: String, age: String, hobbies: String, aboutMe: String) {
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
         val user = mapOf(
             "imageUri" to imageUri,
