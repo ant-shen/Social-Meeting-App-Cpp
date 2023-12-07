@@ -20,6 +20,7 @@ class MatchesFragment : Fragment(){
     ): View? {
         binding = FragmentMatchesBinding.inflate(layoutInflater)
         binding.recyclerView.adapter = MatchesAdapter(requireContext(), list!!)
+
         return binding.root
     }
 }

@@ -27,6 +27,7 @@ class CreateProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         storageReference = FirebaseStorage.getInstance().reference
+        var imageUri = ""
 
         // goes into gallery to pick an image to upload
         val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
@@ -46,27 +47,29 @@ class CreateProfileActivity : AppCompatActivity() {
 
         binding.createProfileButton.setOnClickListener {
             //val userQuery = usersRef.orderByChild("username").equalTo(currentUser!!.email)
+            val firstName = binding.firstName.text.toString()
+            val lastName = binding.lastName.text.toString()
+            val major = binding.major.text.toString()
+            val gender = binding.gender.text.toString()
+            val age = binding.age.text.toString()
+            val hobbies = binding.hobby.text.toString()
+            val aboutMe = binding.aboutMe.text.toString()
             uri?.let {
                 storageReference.child(currentUser!!.uid).putFile(it)
                     .addOnSuccessListener { task ->
                         task.metadata!!.reference!!.downloadUrl
                             .addOnSuccessListener { url ->
                                 Toast.makeText(this, "Image successfully stored!", Toast.LENGTH_SHORT).show()
-                                val imageUri = url.toString()
-                                val firstName = binding.firstName.text.toString()
-                                val lastName = binding.lastName.text.toString()
-                                val major = binding.major.text.toString()
-                                val gender = binding.gender.text.toString()
-                                val age = binding.age.text.toString()
-                                val hobbies = binding.hobby.text.toString()
-                                val aboutMe = binding.aboutMe.text.toString()
-
-
+                                imageUri = url.toString()
                                 updateProfile(imageUri, firstName, lastName, major, gender, age, hobbies, aboutMe)
                             } .addOnFailureListener {
                                 Toast.makeText(this, "Image storage has failed!", Toast.LENGTH_SHORT).show()
                             }
                     }
+            }
+
+            if (imageUri != "") {
+                Toast.makeText(this, "Please upload an image!", Toast.LENGTH_SHORT).show()
             }
             //databaseReference = FirebaseDatabase.getInstance().getReference("users")
         }
