@@ -9,7 +9,7 @@ import com.bignerdranch.android.broncopals.ProfileFragment.Companion.list
 import com.bignerdranch.android.broncopals.adapter.MatchesAdapter
 import com.bignerdranch.android.broncopals.databinding.FragmentMatchesBinding
 
-class MatchesFragment : Fragment(){
+class MatchesFragment : Fragment(R.layout.fragment_matches){
 
     private lateinit var binding : FragmentMatchesBinding
 
@@ -18,7 +18,8 @@ class MatchesFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMatchesBinding.inflate(layoutInflater)
+        binding = FragmentMatchesBinding.inflate(inflater, container, false)
+        list = ArrayList()
         binding.recyclerView.adapter = MatchesAdapter(requireContext(), list!!)
 
         return binding.root

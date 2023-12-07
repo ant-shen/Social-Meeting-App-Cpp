@@ -20,7 +20,7 @@ import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.Direction
 
 
-class ProfileFragment: Fragment() {
+class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var manager: CardStackLayoutManager
@@ -40,11 +40,11 @@ class ProfileFragment: Fragment() {
     private fun init(){
         manager = CardStackLayoutManager(requireContext(), object : CardStackListener{
             override fun onCardDragging(direction: Direction?, ratio: Float) {
-                TODO("Not yet implemented")
+                Log.d("CardDragging", "Direction: $direction, Ratio: $ratio")
             }
 
             override fun onCardSwiped(direction: Direction?) {
-                if (manager !!.topPosition == list!!.size){
+                if (list != null && manager?.topPosition == list!!.size) {
                     Toast.makeText(requireContext(), "No more other profiles", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -58,11 +58,11 @@ class ProfileFragment: Fragment() {
             }
 
             override fun onCardAppeared(view: View?, position: Int) {
-                TODO("Not yet implemented")
+                Log.d("CardAppeared", "Card appeared at position: $position")
             }
 
             override fun onCardDisappeared(view: View?, position: Int) {
-                TODO("Not yet implemented")
+                Log.d("CardDisappeared", "Position: $position")
             }
 
         })

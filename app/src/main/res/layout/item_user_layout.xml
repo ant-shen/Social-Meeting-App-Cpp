@@ -50,6 +50,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:text="TextView"
+            android:layout_margin="12dp"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintStart_toStartOf="parent" />
 
