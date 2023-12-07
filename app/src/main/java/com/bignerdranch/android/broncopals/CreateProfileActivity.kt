@@ -26,9 +26,6 @@ class CreateProfileActivity : AppCompatActivity() {
         binding = ActivityCreateProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val currentUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-//        val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
-
         storageReference = FirebaseStorage.getInstance().reference
 
         // goes into gallery to pick an image to upload
@@ -59,12 +56,13 @@ class CreateProfileActivity : AppCompatActivity() {
                                 val firstName = binding.firstName.text.toString()
                                 val lastName = binding.lastName.text.toString()
                                 val major = binding.major.text.toString()
+                                val gender = binding.major.text.toString()
                                 val age = binding.age.text.toString()
                                 val hobbies = binding.hobby.text.toString()
                                 val aboutMe = binding.aboutMe.text.toString()
 
 
-                                updateProfile(imageUri, firstName, lastName, major, age, hobbies, aboutMe)
+                                updateProfile(imageUri, firstName, lastName, major, gender, age, hobbies, aboutMe)
                             } .addOnFailureListener {
                                 Toast.makeText(this, "Image storage has failed!", Toast.LENGTH_SHORT).show()
                             }
@@ -74,13 +72,14 @@ class CreateProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateProfile( imageUri: String, firstName: String, lastName: String, major: String, age: String, hobbies: String, aboutMe: String) {
+    private fun updateProfile( imageUri: String, firstName: String, lastName: String, major: String,gender: String, age: String, hobbies: String, aboutMe: String) {
         val usersRef: DatabaseReference = FirebaseDatabase.getInstance().reference.child("users")
         val user = mapOf(
             "imageUri" to imageUri,
             "firstName" to firstName,
             "lastName" to lastName,
             "major" to major,
+            "gender" to gender,
             "age" to age,
             "hobbies" to hobbies,
             "aboutMe" to aboutMe,
@@ -91,6 +90,7 @@ class CreateProfileActivity : AppCompatActivity() {
             binding.firstName.text.clear()
             binding.lastName.text.clear()
             binding.major.text.clear()
+            binding.gender.text.clear()
             binding.age.text.clear()
             binding.hobby.text.clear()
             binding.aboutMe.text.clear()
