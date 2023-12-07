@@ -28,9 +28,10 @@ class RegistrationActivity : AppCompatActivity() {
         binding.signUpButton.setOnClickListener {
             val registerUsername = binding.registerUsername.text.toString()
             val registerPassword = binding.registerPassword.text.toString()
+            val registerConfirmPassword = binding.confirmPassword.text.toString()
 
             if (registerUsername.isNotEmpty() && registerPassword.isNotEmpty()){
-                registerUser(registerUsername, registerPassword)
+                registerUser(registerUsername, registerPassword, registerConfirmPassword)
             } else {
                 Toast.makeText(this@RegistrationActivity, "ALL FIELDS MUST BE FILLED OUT!", Toast.LENGTH_SHORT).show()
             }
@@ -42,42 +43,57 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerUser(username: String, password: String) {
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this@RegistrationActivity, "ALL FIELDS MUST BE FILLED OUT!", Toast.LENGTH_SHORT).show()
-            return
-        }
+    private fun registerUser(username: String, password: String, confirmPassword: String) {
+        if (confirmPassword == password ) {
+            auth.createUserWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Registration successful
+                        val user = auth.currentUser
 
-        auth.createUserWithEmailAndPassword(username, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Registration successful
-                    val user = auth.currentUser
-
-                    // Send email verification
-                    user?.sendEmailVerification()
-                        ?.addOnCompleteListener { emailVerificationTask ->
-                            if (emailVerificationTask.isSuccessful) {
-                                Toast.makeText(this@RegistrationActivity, "Verification email sent.", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(this@RegistrationActivity, "Failed to send verification email.", Toast.LENGTH_SHORT).show()
+                        // Send email verification
+                        user?.sendEmailVerification()
+                            ?.addOnCompleteListener { emailVerificationTask ->
+                                if (emailVerificationTask.isSuccessful) {
+                                    Toast.makeText(
+                                        this@RegistrationActivity,
+                                        "Verification email sent.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    Toast.makeText(
+                                        this@RegistrationActivity,
+                                        "Failed to send verification email.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
-                        }
 
-                    val userId = user?.uid
-                    val userData = UserData(userId, username, password, "false")
+                        val userId = user?.uid
+                        val userData = UserData(userId, username, password, "false")
 
-                    // Use the UID as the key for the user in the database
-                    databaseReference.child(userId!!).setValue(userData)
+                        // Use the UID as the key for the user in the database
+                        databaseReference.child(userId!!).setValue(userData)
 
-                    Toast.makeText(this@RegistrationActivity, "Sign Up Successful! Check your email for verification.", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
-                    finish()
-                } else {
-                    // If registration fails, display a message to the user.
-                    Toast.makeText(this@RegistrationActivity, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@RegistrationActivity,
+                            "Sign Up Successful! Check your email for verification.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this@RegistrationActivity, LoginActivity::class.java))
+                        finish()
+                    } else {
+                        // If registration fails, display a message to the user.
+                        Toast.makeText(
+                            this@RegistrationActivity,
+                            "Registration failed: ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            }
+        } else {
+            Toast.makeText(this@RegistrationActivity, "The passwords do not match! Try again.", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

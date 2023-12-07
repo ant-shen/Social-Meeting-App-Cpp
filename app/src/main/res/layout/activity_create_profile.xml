@@ -115,7 +115,7 @@
                 android:drawableStart="@drawable/baseline_cake_24"
                 android:drawablePadding="8dp"
                 android:text="@string/age"
-                android:inputType="number"
+                android:inputType="text"
                 android:autofillHints="age"
                 android:padding="8dp"
                 android:textColor="@color/black" />
