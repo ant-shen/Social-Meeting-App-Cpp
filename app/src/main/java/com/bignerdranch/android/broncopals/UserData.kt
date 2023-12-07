@@ -9,6 +9,7 @@ data class UserData (
     val firstName: String? = null,
     val lastName: String? = null,
     val major: String? = null,
+    val gender: String? = null,
     val age: String? = null,
     val hobbies: String? = null,
     val aboutMe: String? = null
