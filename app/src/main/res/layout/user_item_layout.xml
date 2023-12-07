@@ -16,6 +16,7 @@
             android:id="@+id/userImage"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:contentDescription="@string/profile_picture"
             android:src="@drawable/baseline_person_24" />
 
         <TextView
@@ -24,9 +25,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
-            android:text="User"
+            android:text="@string/user_name"
             android:textColor="@color/black"
-            android:textSize="22dp"/>
+            android:textSize="22sp"/>
     </LinearLayout>
 
 

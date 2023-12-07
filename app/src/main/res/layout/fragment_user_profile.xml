@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green"
     tools:context=".UserProfile">
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -44,6 +43,7 @@
                     android:layout_height="200dp"
                     android:src="@drawable/baseline_upload_24"
                     android:background="@drawable/edittext_border"
+                    android:contentDescription="@string/upload_image"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:scaleType="centerInside" />
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -71,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:padding="5dp"
                     android:textColor="@color/black" />
 
@@ -109,7 +109,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/rounded_button"
-                    android:text="Edit Profile"
+                    android:text="@string/edit_profile"
                     android:textColor="@color/gold"
                     android:textSize="18sp" />
 
