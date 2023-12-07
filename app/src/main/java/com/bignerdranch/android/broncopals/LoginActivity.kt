@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.bignerdranch.android.broncopals.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -21,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Thread.sleep(3000)
+        installSplashScreen()
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -69,8 +72,8 @@ class LoginActivity : AppCompatActivity() {
         val userReference = databaseReference.child(userId)
 
         userReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.child("hasProfile").getValue(Boolean::class.java) == false){
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.child("hasProfile").getValue(Boolean::class.java) == false){
                     Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this@LoginActivity, CreateProfileActivity::class.java))
                     finish()

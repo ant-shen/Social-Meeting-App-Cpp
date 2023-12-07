@@ -17,6 +17,7 @@
                 <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7a47487091ccc5160c12f91f56684a7a/transformed/viewbinding-8.1.3-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/fc40d2e1395ff110e9610fcee3fa6f1b/transformed/firebase-database-ktx-20.3.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/a0252f550fa6cd4e9c9afc056b83541c/transformed/firebase-storage-ktx-20.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/3ead46e5aaa290fe6cff9e00ebf8b236/transformed/material-1.10.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7f9d0645677264fbcd291da16c34332a/transformed/activity-ktx-1.8.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f5d56f0f5e9960b6f4b4e22f45dc5364/transformed/activity-compose-1.8.1-api.jar</arg>
@@ -107,6 +108,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/24afbebe86ce00013716021461cb777b/transformed/print-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/83ee41bd312b90b81563c9b33b36f66e/transformed/interpolator-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.6.0/a7257339a052df0f91433cf9651231bbb802b502/annotation-jvm-1.6.0.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/1f8fcc7104db11515f263126d8f5373a/transformed/core-splashscreen-1.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.8.22/4dabb8248310d833bb6a8b516024a91fd3d275c/kotlin-stdlib-jdk7-1.8.22.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/02fb597e7ccc78e55ae2905aa7ee6bdd/transformed/annotation-experimental-1.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.8.22/636bf8b320e7627482771bbac9ed7246773c02bd/kotlin-stdlib-1.8.22.jar</arg>
@@ -257,6 +259,8 @@
     <orderEntry type="library" name="Gradle: androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-ktx:2.6.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-storage-ktx:20.3.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: androidx.core:core-splashscreen:1.0.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation-jvm:1.6.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.22" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.22" level="project" />
