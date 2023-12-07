@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().reference.child("users")
 
 
-        binding.loginButton.setOnClickListener() {
+        binding.loginButton.setOnClickListener {
             val username = binding.loginUsername.text.toString()
             val password = binding.loginPassword.text.toString()
             val currentUser = firebaseAuth.currentUser
@@ -46,13 +46,10 @@ class LoginActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             // checks for email verification using firebase authentication
                             if(currentUser!!.isEmailVerified) {
-                                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                                 checkUserProfile(currentUser.uid)
                             } else {
                                 // if email still not verified, meaning fresh account, redirect to VerifyEmailActivity
                                 Toast.makeText(this, "This email is not yet verified, please verify email!",Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this,LoginActivity::class.java))
-                                finish()
                             }
                         } else {
                             Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
@@ -74,11 +71,10 @@ class LoginActivity : AppCompatActivity() {
         userReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.child("hasProfile").getValue(Boolean::class.java) == false){
-                    Toast.makeText(this@LoginActivity, "Successful Login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this@LoginActivity, CreateProfileActivity::class.java))
                     finish()
-                }
-                else if (snapshot.child("hasProfile").getValue(Boolean::class.java) == true){
+                } else {
                     Toast.makeText(this@LoginActivity, "Welcome back", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     finish()

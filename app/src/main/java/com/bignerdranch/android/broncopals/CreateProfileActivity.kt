@@ -99,6 +99,7 @@ class CreateProfileActivity : AppCompatActivity() {
 
             val intent = Intent(this@CreateProfileActivity, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }.addOnFailureListener {
             Toast.makeText(this, "Failed to Update", Toast.LENGTH_LONG).show()
         }
