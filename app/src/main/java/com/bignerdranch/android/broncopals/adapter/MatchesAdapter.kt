@@ -8,12 +8,20 @@ import com.bignerdranch.android.broncopals.UserData
 import com.bignerdranch.android.broncopals.databinding.UserItemLayoutBinding
 import com.bumptech.glide.Glide
 
-class MatchesAdapter(val context : Context, val list: ArrayList<UserData>): RecyclerView.Adapter<MatchesAdapter.MatchesViewHolder>(){
-    inner class MatchesViewHolder(val binding: UserItemLayoutBinding)
-        : RecyclerView.ViewHolder(binding.root)
+class MatchesAdapter(val context: Context, var list: ArrayList<UserData>) :
+    RecyclerView.Adapter<MatchesAdapter.MatchesViewHolder>() {
+
+    inner class MatchesViewHolder(val binding: UserItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchesViewHolder {
-        return MatchesViewHolder(UserItemLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
+        return MatchesViewHolder(
+            UserItemLayoutBinding.inflate(
+                LayoutInflater.from(context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -22,7 +30,13 @@ class MatchesAdapter(val context : Context, val list: ArrayList<UserData>): Recy
 
     override fun onBindViewHolder(holder: MatchesViewHolder, position: Int) {
         Glide.with(context).load(list[position].imageUri).into(holder.binding.userImage)
-
         holder.binding.firstName.text = list[position].firstName
+    }
+
+    // Function to update the dataset
+    fun updateData(newList: ArrayList<UserData>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
     }
 }

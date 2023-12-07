@@ -32,6 +32,7 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
     ): View? {
         binding = FragmentProfileBinding.inflate(layoutInflater)
         init()
+
         getData()
 
        return binding.root
@@ -82,21 +83,21 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
         FirebaseDatabase.getInstance().getReference("users")
             .addValueEventListener(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot){
-                    Log.d("Anthony","onDataChange: ${snapshot.toString()}")
+                    Log.d("Anthony", "onDataChange: ${snapshot.toString()}")
                     if (snapshot.exists()){
-                        val list = arrayListOf<UserData>()
+                        list = arrayListOf<UserData>()  // Initialize the global variable
                         for (data in snapshot.children){
                             val model = data.getValue(UserData::class.java)
                             if (model!!.username != FirebaseAuth.getInstance().currentUser!!.email){
-                                if (model!=null)
-                                    list.add(model)
+                                if (model != null)
+                                    list!!.add(model)
                             }
                         }
                         list!!.shuffle()
                         init()
                         binding.cardStackView.layoutManager = manager
                         binding.cardStackView.itemAnimator = DefaultItemAnimator()
-                        binding.cardStackView.adapter = ProfileAdapter(requireContext(), list)
+                        binding.cardStackView.adapter = ProfileAdapter(requireContext(), list!!)
                     }
                     else {
                         Toast.makeText(requireContext(),"Something went wrong", Toast.LENGTH_SHORT).show()
