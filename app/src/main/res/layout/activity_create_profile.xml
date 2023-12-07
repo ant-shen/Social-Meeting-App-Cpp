@@ -168,6 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/rounded_button"
                 android:text="@string/create_profile"
                 android:textColor="@color/gold"
