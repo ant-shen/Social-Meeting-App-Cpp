@@ -16,12 +16,13 @@
     <string name="age">Age</string>
     <string name="hobby">Hobby</string>
     <string name="about_me">About Me</string>
-    <string name="create_profile">Create Profile</string>
+    <string name="create_profile">Update Profile</string>
     <string name="save">Save</string>
     <string name="logo_description">BroncoPal Logo</string>
     <string name="verify_email">Verify Email\nFor\nProfile Creation</string>
     <string name="verified">I Verified !!</string>
-    <string name="profile">Profile Creation</string>
     <string name="upload_image">Upload Pictures to Appeal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -56,7 +56,7 @@ class CreateProfileActivity : AppCompatActivity() {
                                 val firstName = binding.firstName.text.toString()
                                 val lastName = binding.lastName.text.toString()
                                 val major = binding.major.text.toString()
-                                val gender = binding.major.text.toString()
+                                val gender = binding.gender.text.toString()
                                 val age = binding.age.text.toString()
                                 val hobbies = binding.hobby.text.toString()
                                 val aboutMe = binding.aboutMe.text.toString()

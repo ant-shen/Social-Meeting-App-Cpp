@@ -36,7 +36,7 @@
                 android:id="@+id/createProfileText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile"
+                android:text="@string/create_profile"
                 android:textAlignment="center"
                 android:textColor="@color/green"
                 android:textSize="36sp"
