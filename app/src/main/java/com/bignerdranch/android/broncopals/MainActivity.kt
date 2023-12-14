@@ -19,7 +19,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> replaceFragment(ProfileFragment())
                 R.id.matches ->replaceFragment(MatchesFragment())
                 R.id.profile -> replaceFragment(UserProfile())
-                R.id.logout -> startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                R.id.logout -> {
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish()
+                }
 
                 else -> {}
             }
